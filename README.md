@@ -15,12 +15,12 @@ Schwäche – gemessen statt behauptet.
 ```
 Gradientenabstieg (WURZEL)                       [gebaut]
  └─ Newton-Verfahren                             [DIESES STÜCK]
-      └─ Quasi-Newton (BFGS/L-BFGS)               [nicht gebaut]
-           └─ Lagrange-Multiplikatoren/KKT        [nicht gebaut]
-                ├─ Straf-/Barriere-Verfahren      [nicht gebaut]
-                └─ SQP                            [nicht gebaut]
-                     └─ Innere-Punkte-Verfahren   [nicht gebaut]
- └─ Stochastische Gradientenverfahren             [nicht gebaut, letztes Stück]
+      └─ Quasi-Newton (BFGS/L-BFGS)               [gebaut]
+           └─ Lagrange-Multiplikatoren/KKT        [gebaut]
+                ├─ Straf-/Barriere-Verfahren      [gebaut]
+                └─ SQP                            [gebaut]
+                     └─ Innere-Punkte-Verfahren   [gebaut]
+ └─ Stochastische Gradientenverfahren             [gebaut, letztes Stück]
 ```
 
 **Ergebnis in Kürze:** Newton löst eine Quadratik $f(x)=\tfrac12x^\top Ax$ in **genau einem
@@ -29,7 +29,7 @@ Backtracking noch fast 900 Schritte für dieselbe Genauigkeit). Nahe am Optimum 
 die Zahl der korrekten Nachkommastellen mit jedem Schritt (quadratische Konvergenz, gemessener
 Exponent ≈1,85–1,98). **Echte Plan-Korrektur:** die ursprüngliche Erwartung ("Newton scheitert
 bei manchen Startpunkten fern vom Optimum auf der Rosenbrock-Funktion") wurde **widerlegt** – bei
-34 getesteten Startpunkten (Radius bis 20, inkl. der klassischen schwierigen Punkte) konvergierte
+34 getesteten Startpunkten (30 Zufallspunkte in [−2, 2]², dazu die klassischen schwierigen Punkte) konvergierte
 das volle, ungesicherte Newton-Verfahren **immer**, allerdings **nie monoton** (der Funktionswert
 steigt zwischendurch bei jedem einzigen getesteten Startpunkt). Die **echte, hand-hergeleitete**
 Divergenz zeigt sich stattdessen an einer einfacheren Funktion: $f(x)=\ln(1+x^2)$ divergiert
@@ -49,7 +49,7 @@ zu dessen Minimum. Ist die Zielfunktion selbst eine Quadratik, ist das Modell ex
 | Ersetzt man die Hesse-Matrix durch $(1/\eta)I$, reproduziert Newton exakt Gradientenabstieg | ✅ max. Abweichung $8{,}3\cdot10^{-17}$ (Maschinengenauigkeit) |
 | Quadratische Konvergenz nahe dem Optimum (Rosenbrock) | ✅ Exponent 1,85–1,98 bei drei Startpunkten |
 | Gradienten-/Hesse-Check gegen finite Differenzen unter $10^{-6}$ | ✅ alle vier Werte zwischen $10^{-10}$ und $10^{-11}$ |
-| ⚠️ **Widerlegt:** volles Newton scheitert bei manchen Startpunkten fern vom Optimum auf Rosenbrock | ❌ **Konvergiert bei 34/34 getesteten Startpunkten** (Radius bis 20) – aber bei 34/34 NICHT monoton (f steigt zwischendurch) |
+| ⚠️ **Widerlegt:** volles Newton scheitert bei manchen Startpunkten fern vom Optimum auf Rosenbrock | ❌ **Konvergiert bei 34/34 getesteten Startpunkten** (30 Zufallspunkte in [−2, 2]² plus 4 klassische) – aber bei 34/34 NICHT monoton (f steigt zwischendurch) |
 | Echte Divergenz zeigt sich stattdessen an $\ln(1+x^2)$ | ✅ scharfe Schwelle exakt bei $|x_0|=1/\sqrt3$ |
 
 ## Befunde (gemessen, keine Behauptungen)
@@ -73,7 +73,7 @@ zu dessen Minimum. Ist die Zielfunktion selbst eine Quadratik, ist das Modell ex
 Die Zahl der Nachkommastellen verdoppelt sich sichtbar (Exponent nähert sich 2, nicht 1 wie bei
 linearer Konvergenz).
 
-**Rosenbrock, 34 Startpunkte (Radius bis 20, inkl. der klassischen schwierigen Startwerte
+**Rosenbrock, 34 Startpunkte (30 Zufallspunkte in [−2, 2]², dazu die klassischen schwierigen Startwerte
 $(-1{,}2;\,1{,}0)$, $(-1{,}5;\,-1{,}0)$, $(2{,}0;\,-1{,}0)$, $(-2{,}0;\,2{,}0)$):**
 
 | Konvergiert | Nicht-monoton (f steigt zwischendurch) | Max. Iterationen gebraucht |
@@ -118,7 +118,7 @@ Gradienten-/Hesse-Check).
 
 **Echte, substantielle Plan-Korrektur:** Die ursprüngliche Hypothese ("Newton scheitert bei
 manchen Startpunkten fern vom Optimum auf Rosenbrock") wurde durch die Vormessung **widerlegt** –
-selbst bei einem Suchradius von 20 (deutlich weiter als jeder in der Literatur zitierte
+selbst bei Zufallsstarts in [−2, 2]² (in einer Vormessung auch bis Radius 20, deutlich weiter als jeder in der Literatur zitierte
 "schwierige" Startpunkt für diese Funktion) konvergierte das volle, ungesicherte Newton-Verfahren
 in JEDEM der 34 getesteten Fälle, meist innerhalb weniger Iterationen. Der reale, messbare
 Schwachpunkt liegt woanders: der Funktionswert sinkt dabei **nicht monoton** – bei allen 34
@@ -175,3 +175,7 @@ streamlit run app.py
 ## Literatur
 
 - Nocedal, J. & Wright, S. J. (2006). *Numerical Optimization* (2. Aufl.). Springer.
+
+---
+
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zur Reihe: [Nichtlineare Optimierung: acht Stücke, zwei Äste](https://sebastianhanisch.net/konzepte-nichtlineare-optimierung.html).

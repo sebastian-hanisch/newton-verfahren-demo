@@ -117,7 +117,7 @@ st.markdown(
     "der volle Schritt fern vom Optimum auch danebengehen. Beides wird hier gemessen."
 )
 st.caption(
-    "Stück 2 der 'Nichtlineare Optimierung'-Reihe. Geplante Folgestücke (noch nicht gebaut): "
+    "Stück 2 der 'Nichtlineare Optimierung'-Reihe. Weitere Stücke der Reihe: "
     "Quasi-Newton (BFGS/L-BFGS), Lagrange/KKT, Straf-/Barriere-Verfahren, SQP, "
     "Innere-Punkte-Verfahren, Stochastische Gradientenverfahren."
 )
@@ -304,7 +304,7 @@ algebraisch identisch zu $x_{k+1}=x_k-\eta\nabla f(x_k)$ (Stück 1).
 
 st.markdown("---")
 st.caption(
-    "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) "
-    "– Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung "
-    "für Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zur Reihe: [Nichtlineare Optimierung: acht Stücke, zwei Äste](https://sebastianhanisch.net/konzepte-nichtlineare-optimierung.html)."
 )
