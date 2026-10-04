@@ -232,9 +232,10 @@ r_newton.fvals, r_gd.fvals = nvg["newton_fvals"], nvg["gd_fvals"]
 st.plotly_chart(viz.build_newton_vs_gd_figure(r_newton, r_gd), key="newton_vs_gd_chart",
                 use_container_width=True)
 st.caption(
-    "Bei κ=20 löst Newton dieselbe Quadratik in EINEM Schritt, Gradientenabstieg braucht "
-    "hunderte Schritte — Newtons Konvergenz hängt (anders als bei Gradientenabstieg) NICHT von "
-    "der Konditionszahl ab."
+    "Bei κ=20 löst Newton dieselbe Quadratik in EINEM Schritt; Gradientenabstieg (feste Schrittweite "
+    "0.5/κ, hier auf 200 Schritte begrenzt) ist nach den gezeigten 200 Schritten erst bei f ≈ 1.5·10⁻⁵ "
+    "und braucht für f < 10⁻²⁰ etwa 900 Schritte — Newtons Konvergenz hängt (anders als bei "
+    "Gradientenabstieg) NICHT von der Konditionszahl ab."
 )
 
 st.subheader("🚧 Wo die Annahmen enden")

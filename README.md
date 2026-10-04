@@ -25,7 +25,8 @@ Gradientenabstieg (WURZEL)                       [gebaut]
 
 **Ergebnis in Kürze:** Newton löst eine Quadratik $f(x)=\tfrac12x^\top Ax$ in **genau einem
 Schritt** – unabhängig von der Konditionszahl κ (bei κ=200 braucht Gradientenabstieg mit
-Backtracking noch fast 900 Schritte für dieselbe Genauigkeit). Nahe am Optimum verdoppelt sich
+Backtracking rund 1600 bis 1900 Schritte für dieselbe Genauigkeit, gemessen mit der gradient-descent-demo
+auf 10 Zufallsquadratiken mit d=5 bzw. d=10; bei κ=100 sind es dort 888). Nahe am Optimum verdoppelt sich
 die Zahl der korrekten Nachkommastellen mit jedem Schritt (quadratische Konvergenz, gemessener
 Exponent ≈1,85–1,98). **Echte Plan-Korrektur:** die ursprüngliche Erwartung ("Newton scheitert
 bei manchen Startpunkten fern vom Optimum auf der Rosenbrock-Funktion") wurde **widerlegt** – bei
