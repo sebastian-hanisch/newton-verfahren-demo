@@ -26,7 +26,7 @@ Gradientenabstieg (WURZEL)                       [gebaut]
 **Ergebnis in Kürze:** Newton löst eine Quadratik $f(x)=\tfrac12x^\top Ax$ in **genau einem
 Schritt** – unabhängig von der Konditionszahl κ (bei κ=200 braucht Gradientenabstieg mit
 Backtracking rund 1600 bis 1900 Schritte für dieselbe Genauigkeit, gemessen mit der gradient-descent-demo
-auf 10 Zufallsquadratiken mit d=5 bzw. d=10; bei κ=100 sind es dort 888). Nahe am Optimum verdoppelt sich
+auf 10 Zufallsquadratiken mit d=5 bzw. d=10; bei κ=100 sind es dort 887). Nahe am Optimum verdoppelt sich
 die Zahl der korrekten Nachkommastellen mit jedem Schritt (quadratische Konvergenz, gemessener
 Exponent ≈1,85–1,98). **Echte Plan-Korrektur:** die ursprüngliche Erwartung ("Newton scheitert
 bei manchen Startpunkten fern vom Optimum auf der Rosenbrock-Funktion") wurde **widerlegt** – bei
@@ -86,9 +86,9 @@ Schwelle exakt bei $|x_0|=1/\sqrt3\approx0{,}57735$):
 
 | $x_0$ | Abstand zur Schwelle | Divergiert? |
 |---|---|---|
-| 0,56735 | −0,01 | Nein (10 Schritte) |
-| 0,57635 | −0,001 | Nein (12 Schritte) |
-| 0,57725 | −0,0001 | Nein (14 Schritte) |
+| 0,56735 | −0,01 | Nein (6 Schritte) |
+| 0,57635 | −0,001 | Nein (8 Schritte) |
+| 0,57725 | −0,0001 | Nein (10 Schritte) |
 | 0,57745 | +0,0001 | **Ja** (25 Schritte bis über $10^6$) |
 | 0,57835 | +0,001 | **Ja** (22 Schritte) |
 | 0,58735 | +0,01 | **Ja** (22 Schritte) |
@@ -135,7 +135,7 @@ behandeltes Thema). Nur unrestringierte Minimierung.
 
 ## Tests
 
-32 Tests, `python -m pytest tests/ -v` (Laufzeit lokal ~2 Sekunden):
+37 Tests, `python -m pytest tests/ -v` (Laufzeit lokal ~2 Sekunden):
 - `test_functions.py` – Testfunktionen, Gradienten/Hesse-Matrizen gegen finite Differenzen.
 - `test_optimizer.py` – Ein-Schritt-Konvergenz, quadratische Konvergenz, Divergenz/Konvergenz an
   der Log-Beule-Schwelle, Array-Längen-Konsistenz auch bei Divergenz.
@@ -143,6 +143,8 @@ behandeltes Thema). Nur unrestringierte Minimierung.
 - `test_claims.py` – jede Zahl oben nachgerechnet, mit Toleranzband (Modul-Fixtures für die
   teureren Sweeps).
 - `test_presets.py`, `test_app.py` – Presets, Funktionswechsel, Footer.
+- `test_oracle_newton.py` – unabhängige Orakel: Cramersche-Regel-Iteration auf Rosenbrock, `scipy.optimize.rosen*`,
+  Fixpunkt-Iteration der Log-Beule (Schwelle und Schrittzahl).
 
 ## Dateistruktur
 
