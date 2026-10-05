@@ -51,7 +51,7 @@ zu dessen Minimum. Ist die Zielfunktion selbst eine Quadratik, ist das Modell ex
 | Quadratische Konvergenz nahe dem Optimum (Rosenbrock) | ✅ Exponent 1,85–1,98 bei drei Startpunkten |
 | Gradienten-/Hesse-Check gegen finite Differenzen unter $10^{-6}$ | ✅ alle vier Werte zwischen $10^{-10}$ und $10^{-11}$ |
 | ⚠️ **Widerlegt:** volles Newton scheitert bei manchen Startpunkten fern vom Optimum auf Rosenbrock | ❌ **Konvergiert bei 34/34 getesteten Startpunkten** (30 Zufallspunkte in [−2, 2]² plus 4 klassische) – aber bei 34/34 NICHT monoton (f steigt zwischendurch) |
-| Echte Divergenz zeigt sich stattdessen an $\ln(1+x^2)$ | ✅ scharfe Schwelle exakt bei $|x_0|=1/\sqrt3$ |
+| Echte Divergenz zeigt sich stattdessen an $\ln(1+x^2)$ | ✅ scharfe Schwelle exakt bei $\lvert x_0\rvert=1/\sqrt3$ |
 
 ## Befunde (gemessen, keine Behauptungen)
 
